@@ -29,7 +29,7 @@ public class AuthorizaController {
         accessTokenDto.setState(state);
         accessTokenDto.setClient_id("5161ee6dfbf7ac02f804");
         accessTokenDto.setClient_secret("63e9fa18fbd8567d26ae8622aa47e0f01707e5e5");
-        accessTokenDto.setRedirect_uri("http://localhost:8081/callback");
+        accessTokenDto.setRedirect_uri("http://localhost:8001/callback");
         authorizaGitService.getAccessTokenDto(accessTokenDto);
         return "hello";
     }
