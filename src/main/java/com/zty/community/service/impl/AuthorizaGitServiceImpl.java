@@ -26,7 +26,10 @@ public class AuthorizaGitServiceImpl implements AuthorizaGitService {
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
+            String string = response.body().string();
+            String token = string.split("&")[0].split("=")[1];
+            System.out.println(token);
+            return token;
         } catch (IOException e) {
         }
         return "";
