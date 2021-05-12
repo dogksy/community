@@ -3,3 +3,9 @@ server:
   servlet:
     encoding:
       charset: UTF-8
+
+#github权限调用信息
+githubinfo:
+  client_id: 5161ee6dfbf7ac02f804
+  client_secret: 63e9fa18fbd8567d26ae8622aa47e0f01707e5e5
+  redirect_uri: http://localhost:8001/callback

@@ -1,6 +1,11 @@
 package com.zty.community.dto;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
+
+@Component
+@ConfigurationProperties(prefix = "githubinfo")
 public class AccessTokenDto {
     private String client_id;
     private String client_secret;
