@@ -1,6 +1,7 @@
 package com.zty.community.controller;
 
 import com.zty.community.dto.AccessTokenDto;
+import com.zty.community.dto.GithubUserInfo;
 import com.zty.community.service.AuthorizaGitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,8 @@ public class AuthorizaController {
         accessTokenDto.setClient_id("5161ee6dfbf7ac02f804");
         accessTokenDto.setClient_secret("63e9fa18fbd8567d26ae8622aa47e0f01707e5e5");
         accessTokenDto.setRedirect_uri("http://localhost:8001/callback");
-        authorizaGitService.getAccessTokenDto(accessTokenDto);
+        String accessToken = authorizaGitService.getAccessTokenDto(accessTokenDto);
+        GithubUserInfo user = authorizaGitService.getUser(accessToken);
         return "hello";
     }
 }
