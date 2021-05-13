@@ -9,3 +9,18 @@ githubinfo:
   client_id: 5161ee6dfbf7ac02f804
   client_secret: 63e9fa18fbd8567d26ae8622aa47e0f01707e5e5
   redirect_uri: http://localhost:8001/callback
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/community?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=Asia/Shanghai
+
+
+mybatis-plus:
+  global-config:
+    banner: false
+  mapper-locations: classpath*:com/zty/community/**/mapping/*.xml
+  type-aliases-package: com.zty.community.modular.model
+

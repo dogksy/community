@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zty.community.modular.dao.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.zty.community.modular.model.User">
+        <id column="id" property="id"/>
+        <id column="account_id" property="accountId"/>
+        <id column="name" property="name"/>
+        <id column="token" property="token"/>
+        <id column="gmt_create" property="gmtCreate"/>
+        <id column="gmt_modified" property="gmtModified"/>
+    </resultMap>
+
+    <insert id="addUserInfo" parameterType="com.zty.community.modular.model.User">
+        INSERT INTO community.`user` ( account_id, `name`, token, gmt_create, gmt_modified )
+        VALUES
+	    ( #{accountId}, #{name}, #{token}, #{gmtCreate}, #{gmtModified} );
+    </insert>
+
+</mapper>

@@ -1,6 +1,6 @@
-package com.zty.community.dto;
+package com.zty.community.modular.dto;
 
-public class GithubUserInfo {
+public class GithubUserInfoDto {
     private Long id;
     private String name;
     private String bio;
@@ -27,5 +27,14 @@ public class GithubUserInfo {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    @Override
+    public String toString() {
+        return "GithubUserInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", bio='" + bio + '\'' +
+                '}';
     }
 }

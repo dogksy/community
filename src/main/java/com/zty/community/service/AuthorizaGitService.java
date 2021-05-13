@@ -1,13 +1,12 @@
 package com.zty.community.service;
 
-import com.zty.community.dto.AccessTokenDto;
-import com.zty.community.dto.GithubUserInfo;
-import org.springframework.stereotype.Service;
+import com.zty.community.modular.dto.AccessTokenDto;
+import com.zty.community.modular.dto.GithubUserInfoDto;
 
 
 public interface AuthorizaGitService {
 
     public String getAccessTokenDto(AccessTokenDto accessTokenDto);
 
-    public GithubUserInfo getUser(String accessToken);
+    public GithubUserInfoDto getUser(String accessToken);
 }
