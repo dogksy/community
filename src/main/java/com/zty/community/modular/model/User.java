@@ -14,7 +14,8 @@ import lombok.*;
 @AllArgsConstructor
 @TableName("user")
 public class User {
-    @TableId(value = "id",type = IdType.AUTO)
+    private static final long serialVersionUID = 1L;
+    @TableId(value = "id", type = IdType.INPUT)
     private Integer id;
     private String accountId;
     private String name;

@@ -23,4 +23,7 @@ mybatis-plus:
     banner: false
   mapper-locations: classpath*:com/zty/community/**/mapping/*.xml
   type-aliases-package: com.zty.community.modular.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    jdbc-type-for-null: null
 

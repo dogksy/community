@@ -11,10 +11,10 @@
         <id column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
-    <insert id="addUserInfo" parameterType="com.zty.community.modular.model.User">
-        INSERT INTO community.`user` ( account_id, `name`, token, gmt_create, gmt_modified )
-        VALUES
-	    ( #{accountId}, #{name}, #{token}, #{gmtCreate}, #{gmtModified} );
-    </insert>
+<!--    <insert id="addUserInfo" parameterType="com.zty.community.modular.model.User">-->
+<!--        INSERT INTO community.`user` ( account_id, `name`, token, gmt_create, gmt_modified )-->
+<!--        VALUES-->
+<!--	    ( #{accountId}, #{name}, #{token}, #{gmtCreate}, #{gmtModified} );-->
+<!--    </insert>-->
 
 </mapper>

@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### webpack ###
-communityDome/src/test/*
+src/test/*
