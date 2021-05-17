@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @EnableConfigurationProperties
@@ -37,7 +39,8 @@ public class AuthorizaController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
-                           HttpServletRequest request) {
+                           HttpServletRequest request,
+                           HttpServletResponse response) {
         accessTokenDto.setCode(code);
         accessTokenDto.setState(state);
         String accessToken = authorizaGitService.getAccessTokenDto(accessTokenDto);
@@ -51,7 +54,9 @@ public class AuthorizaController {
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
             userMapper.insert(user);
+            //设置cookie 和session
             request.getSession().setAttribute("User", githubUser);
+            response.addCookie(new Cookie("token",user.getToken()));
             return "redirect:hello";
         } else {
             //去做登录失败操作
