@@ -2,7 +2,6 @@ package com.zty.community.modular.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zty.community.modular.model.User;
-import lombok.experimental.UtilityClass;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
