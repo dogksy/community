@@ -7,14 +7,16 @@ import com.zty.community.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.annotation.Annotation;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * @author zty
  */
 @Service
-public class LoginServiceImpl implements LoginService {
+public class LoginServiceImpl implements LoginService, Serializable {
 
     @Autowired
     private UserMapper userMapper;
@@ -33,12 +35,22 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public String encoding() {
-        return null;
-    }
-
-    @Override
-    public Class<? extends Annotation> annotationType() {
-        return null;
+    public User loginVerify(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies==null){
+            return null;
+        }
+        User user = null;
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("token")) {
+                String token = cookie.getValue();
+                user = userMapper.findByToken(token);
+                if (user != null) {
+                    request.getSession().setAttribute("User", user);
+                }
+                break;
+            }
+        }
+        return user;
     }
 }
