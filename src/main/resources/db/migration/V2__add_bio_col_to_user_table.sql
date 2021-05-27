@@ -1,0 +1,1 @@
+ALTER TABLE `user` ADD `bio` varchar(255) DEFAULT NULL COMMENT '个人简介';

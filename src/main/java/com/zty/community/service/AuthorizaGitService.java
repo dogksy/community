@@ -6,7 +6,7 @@ import com.zty.community.modular.dto.GithubUserInfoDto;
 
 public interface AuthorizaGitService {
 
-    public String getAccessTokenDto(AccessTokenDto accessTokenDto);
+     String getAccessTokenDto(AccessTokenDto accessTokenDto);
 
-    public GithubUserInfoDto getUser(String accessToken);
+     GithubUserInfoDto getUser(String accessToken);
 }
