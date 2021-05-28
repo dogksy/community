@@ -27,3 +27,7 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     jdbc-type-for-null: null
 
+logging:
+  file:
+    path: logs
+  config: classpath:logback-community.xml
