@@ -8,6 +8,7 @@ import okhttp3.*;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zty
@@ -16,10 +17,13 @@ import java.io.IOException;
 @Service
 public class AuthorizaGitServiceImpl implements AuthorizaGitService {
 
-    @Override 
+    @Override
     public String getAccessTokenDto(AccessTokenDto accessTokenDto) {
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .callTimeout(30, TimeUnit.SECONDS)
+                .build();
         RequestBody body = RequestBody.create(mediaType, JSON.toJSONString(accessTokenDto));
         Request request = new Request.Builder()
                 .url("https://github.com/login/oauth/access_token")
@@ -37,10 +41,13 @@ public class AuthorizaGitServiceImpl implements AuthorizaGitService {
 
     @Override
     public GithubUserInfoDto getUser(String accessToken) {
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .callTimeout(30, TimeUnit.SECONDS)
+                .build();
         Request request = new Request.Builder()
                 .url("https://api.github.com/user")
-                .header("Authorization","token "+accessToken)
+                .header("Authorization", "token " + accessToken)
                 .build();
         try {
             Response response = client.newCall(request).execute();

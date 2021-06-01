@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -28,8 +29,9 @@ public class LoginServiceImpl implements LoginService, Serializable {
         user.setToken(UUID.randomUUID().toString());
         user.setName(githubUser.getName());
         user.setAccountId(String.valueOf(githubUser.getId()));
-        user.setGmtCreate(System.currentTimeMillis());
+        user.setGmtCreate(new Date());
         user.setGmtModified(user.getGmtCreate());
+        user.setBio(githubUser.getBio());
         userMapper.insert(user);
         return user;
     }
