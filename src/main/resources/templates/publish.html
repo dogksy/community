@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>发布问题-狗天论坛</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="css/community.css">
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">狗天论坛</span>
+            </button>
+            <a class="navbar-brand" href="#">狗天论坛</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索话题、或话题人">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" th:if="${session.User}!=null">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false" th:text="${session.User.getName()}"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">消息中心</a></li>
+                        <li><a href="#">我的信息</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.User==null}">
+                    <a href="https://github.com/login/oauth/authorize?client_id=5161ee6dfbf7ac02f804&redirect_uri=http://47.97.90.220:8001/callback&scope=user&state=110">登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid main">
+    <div class="row">
+        <!--左侧发布问题主版-->
+        <div style="width:70%" class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起提问</h3>
+            <hr>
+            <!--提问表单-->
+            <form style="width: 100%" class="col-md-12" action="/formInfo" method="post">
+                <div style="width: 100%; float: left" class="col-md-6 form-group">
+                    <label for="InitiateQuestions">发起标题 (简单扼要):</label>
+                    <br>
+                    <input style="display: inline-block;width: 68% ;float: left" type="text" class="form-control"
+                           id="InitiateQuestions" name="InitiateQuestions" placeholder="发起问题...">
+                    <!--问题类型归类-->
+                    <select style="width: 30%; float: right" class="col-md-6 form-control">
+                        <option disabled selected value>请选择标题类型</option>
+                        <option>Java</option>
+                        <option>C++</option>
+                        <option>HTML</option>
+                        <option>Liunx</option>
+                        <option>Python</option>
+                    </select>
+                </div>
+                <!--问题补充-->
+                <div style="width: 100%; float: left" class="col-md-6 form-group">
+                    <label for="InitiateQuestions">问题补充(必填，请参照右侧提示):</label>
+                    <textarea id="s" name="s" class="form-control" rows="15"
+                              placeholder="请输入问题详细描述..."></textarea>
+                </div>
+                <!--添加标签-->
+                <div style="width: 100%" class="col-md-6 form-group">
+                    <label style="width: 100%" for="InitiateQuestions">添加标签</label>
+                    <input style="width: auto" type="text" class="form-control" id="tag" name="tag"
+                           placeholder="输入标签，用,隔开">
+                </div>
+                <button type="submit" class="btn btn-success btn-publish">确认发布
+                </button>
+            </form>
+        </div>
+
+        <!--右侧发言规范-->
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 criterion"></div>
+        <h3>问题发起指南</h3>
+        <dl>
+            <dt>• 问题标题:</dt>
+            <dd>请用精简的语言描述您发布的问题，不超过25字</dd>
+        </dl>
+        <dl>
+            <dt>• 问题补充:详细补充您的问题内容，并确保问题描述清晰直观, 并提供一些相关的资料：</dt>
+            <dd> 服务器运行环境信息。</dd>
+            <dd> 软件版本。</dd>
+            <dd> 问题发生的上下文信息。</dd>
+            <dd> 可以完整复现问题的代码（如可直接运行于 Kibana Console 的复现流程）。</dd>
+            <dd> 补充完整的异常和错误信息。</dd>
+            <dd> 注意阅读格式友好，代码和异常信息请用代码标签格式化张贴。</dd>
+        </dl>
+        <dl>
+            <dt>• 选择标签:</dt>
+            <dl>选择一个或者多个合适的标签，以逗号分割，每个标签不超过10个字。</dl>
+        </dl>
+    </div>
+</div>
+</body>
+</html>

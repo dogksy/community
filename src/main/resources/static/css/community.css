@@ -1,0 +1,17 @@
+.main {
+    margin: 30px;
+    background-color: white;
+}
+
+body {
+    background-color: #efefef;
+}
+
+.btn-publish {
+    float: right;
+    width: 18%;
+    margin: 15px;
+}
+.criterion{
+    margin: 34px;
+}
