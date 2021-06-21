@@ -1,11 +1,9 @@
 package com.zty.community.modular.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,18 +12,20 @@ import java.util.Date;
  */
 @Builder
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("Question")
-public class Question {
+@TableName("question")
+public class Question implements Serializable {
     private Integer id;
     private String title;
     private String description;
     private Date createTime;
-    private Date modified_time;
+    private Date modifiedTime;
     private Integer creator;
-    private Integer comment_count;
-    private Integer view_count;
-    private Integer like_count;
+    private Integer commentCount;
+    private Integer viewCount;
+    private Integer likeCount;
     private String tag;
+    private String language;
 }

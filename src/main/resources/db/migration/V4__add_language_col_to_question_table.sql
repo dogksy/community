@@ -1,0 +1,1 @@
+ALTER TABLE `question` ADD `language` varchar(10) DEFAULT NULL COMMENT '编程语言';

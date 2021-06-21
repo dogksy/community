@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="css/community.css">
+    <script src="js/jQuery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
 
 </head>
@@ -51,14 +52,14 @@
             <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起提问</h3>
             <hr>
             <!--提问表单-->
-            <form style="width: 100%" class="col-md-12" action="/formInfo" method="post">
+            <form id="question" style="width: 100%" class="col-md-12" method="post">
                 <div style="width: 100%; float: left" class="col-md-6 form-group">
-                    <label for="InitiateQuestions">发起标题 (简单扼要):</label>
+                    <label for="title">发起标题 (简单扼要):</label>
                     <br>
                     <input style="display: inline-block;width: 68% ;float: left" type="text" class="form-control"
-                           id="InitiateQuestions" name="InitiateQuestions" placeholder="发起问题...">
+                           id="title" name="title" placeholder="问题标题...">
                     <!--问题类型归类-->
-                    <select style="width: 30%; float: right" class="col-md-6 form-control">
+                    <select name="language" style="width: 30%; float: right" class="col-md-6 form-control">
                         <option disabled selected value>请选择标题类型</option>
                         <option>Java</option>
                         <option>C++</option>
@@ -69,19 +70,46 @@
                 </div>
                 <!--问题补充-->
                 <div style="width: 100%; float: left" class="col-md-6 form-group">
-                    <label for="InitiateQuestions">问题补充(必填，请参照右侧提示):</label>
-                    <textarea id="s" name="s" class="form-control" rows="15"
+                    <label for="title">问题补充(必填，请参照右侧提示):</label>
+                    <textarea id="description" name="description" class="form-control" rows="15"
                               placeholder="请输入问题详细描述..."></textarea>
                 </div>
                 <!--添加标签-->
                 <div style="width: 100%" class="col-md-6 form-group">
-                    <label style="width: 100%" for="InitiateQuestions">添加标签</label>
+                    <label style="width: 100%" for="title">添加标签</label>
                     <input style="width: auto" type="text" class="form-control" id="tag" name="tag"
                            placeholder="输入标签，用,隔开">
                 </div>
-                <button type="submit" class="btn btn-success btn-publish">确认发布
+                <!--                <span th:></span>-->
+                <button type="button" class="btn btn-success btn-publish" onclick="question()">确认发布
                 </button>
             </form>
+
+            <script>
+                function question() {
+                    const data = $('#question').serializeArray();
+                    let dataObject = {};
+                    $.each(data, function (i, item) {
+                        dataObject[item.name] = item.value;
+                    })
+                    $.ajax({
+                        url: "http://localhost:8001/formInfo",
+                        type: "post",
+                        data: JSON.stringify(dataObject),
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.code == 0) {
+                                alert("success")
+                            }
+                        },
+                        error: function () {
+                            alert("error");
+                        }
+                    });
+                }
+
+            </script>
         </div>
 
         <!--右侧发言规范-->

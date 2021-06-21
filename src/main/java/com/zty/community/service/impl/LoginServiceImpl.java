@@ -39,7 +39,7 @@ public class LoginServiceImpl implements LoginService, Serializable {
     @Override
     public User loginVerify(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
-        if (cookies==null){
+        if (cookies == null) {
             return null;
         }
         User user = null;
