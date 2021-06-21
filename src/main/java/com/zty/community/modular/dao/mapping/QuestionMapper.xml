@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zty.community.modular.dao.QuestionMapper">
+
+    <resultMap id="BaseResultMap" type="com.zty.community.modular.model.Question">
+        <id column="id" property="id"/>
+        <id column="title" property="title"/>
+        <id column="description" property="description"/>
+        <id column="create_time" property="createTime"/>
+        <id column="comment_count" property="commentCount"/>
+        <id column="view_count" property="viewCount"/>
+        <id column="like_count" property="likeCount"/>
+        <id column="modified_time" property="modifiedTime"/>
+        <id column="creator" property="creator"/>
+        <id column="tag" property="tag"/>
+    </resultMap>
+
+</mapper>
