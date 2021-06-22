@@ -5,8 +5,7 @@
 [spring web文档](https://spring.io/guides/gs/serving-web-content/)  
 [参考网站](https://elasticsearch.cn/explore)  
 [bootstrap](https://www.bootcss.com/)  
-[git授权文档](https://docs.github.com/en/developers/apps/building-oauth-apps)  
-[flyway](https://flywaydb.org/documentation/getstarted/firststeps/maven)
+[git授权文档](https://docs.github.com/en/developers/apps/building-oauth-apps)
 ## 工具
 [git下载地址](https://git-scm.com/)  
 [时序图工具](https://www.visual-paradigm.com) 

@@ -29,8 +29,8 @@ public class PublishController implements Serializable {
 
     @PostMapping("/formInfo")
     public String formInfo(@RequestBody() Question question,
-            HttpServletRequest request,
-            Model model) {
+                           HttpServletRequest request,
+                           Model model) {
         return publishService.publicQuestion(question, request, model);
     }
 }
